@@ -8,7 +8,7 @@ terraform {
 
     backend "s3" {
       key    = "terraform-custom-template.tfstate"
-      region = var.region
+      region = "eu-west-2"
    }
 
   required_version = ">=1.0.0"
@@ -16,5 +16,5 @@ terraform {
 }
 
 provider "aws" {
-  region  = var.region
+  region  = "eu-west-2"
 }
