@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "s3Bucket" {
+resource "aws_s3_bucket" "s3_bucket" {
      bucket    = var.public_bucket_name
      acl       = "public-read"
 
