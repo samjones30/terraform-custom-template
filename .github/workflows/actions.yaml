@@ -23,7 +23,7 @@ jobs:
 
       - name: Terraform init test
         id: init
-        run: terraform init -backend-config "backends/test.conf
+        run: terraform init -backend-config backends/test.conf
 
       - name: Terraform workspace select
         id: workspace
