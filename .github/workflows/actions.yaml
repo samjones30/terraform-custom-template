@@ -9,7 +9,7 @@ jobs:
   terraform-validate-test:
     name: 'Terraform'
     runs-on: ubuntu-latest
-    env: test
+    environment: test
 
     defaults:
       run:
