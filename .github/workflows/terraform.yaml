@@ -25,13 +25,13 @@ jobs:
         with:
           args: "-backend-config backends/test.conf"
 
-      - name: Terraform workspace select
-        id: workspace
-        run: terraform workspace select test || terraform workspace new test
-
       - name: Terraform init test
         id: init
         run: terraform init 
+
+      - name: Terraform workspace select
+        id: workspace
+        run: terraform workspace select test || terraform workspace new test
 
       - name: Terraform format 
         id: fmt
