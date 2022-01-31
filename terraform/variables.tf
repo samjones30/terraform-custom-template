@@ -6,3 +6,7 @@ variable "public_bucket_name" {
 variable "region" {
   default = "eu-west-2"
 }
+
+locals {
+  public_bucket_name = var.public_bucket_name[terraform.workspace]
+}

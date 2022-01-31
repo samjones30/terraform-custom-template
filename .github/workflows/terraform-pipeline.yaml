@@ -18,7 +18,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
   plan-test:
-    #needs: validate-test
+    needs: validate-test
     uses: ./.github/workflows/terraform-plan.yaml
     with:
       env: test
