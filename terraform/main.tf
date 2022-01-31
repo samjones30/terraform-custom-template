@@ -4,16 +4,16 @@ resource "aws_s3_bucket" "s3_bucket" {
 
   policy = <<EOF
 {
-  "id" : "MakePublic",
-  "version" : "2012-10-17",
-  "statement" : [
+  "Id" : "MakePublic",
+  "Version" : "2012-10-17",
+  "Statement" : [
     {
-      "action" : [
+      "Action" : [
         "s3:GetObject"
       ],
-      "effect" : "Allow",
-      "resource" : "arn:aws:s3:::${local.public_bucket_name}/*",
-      "principal" : "*"
+      "Effect" : "Allow",
+      "Resource" : "arn:aws:s3:::${local.public_bucket_name}/*",
+      "Principal" : "*"
     }
   ]
 }
