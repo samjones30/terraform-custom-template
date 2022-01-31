@@ -30,7 +30,7 @@ jobs:
 
       - name: Terraform init test
         id: init
-        run: terraform init -backend-config "backends/${{ inputs.tf_env }}.conf"
+        run: terraform init -backend-config "./backends/${{ inputs.tf_env }}.conf"
 
       - name: Terraform workspace select
         id: workspace
