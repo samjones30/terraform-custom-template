@@ -1,0 +1,15 @@
+name: 'Terraform'
+
+on: 
+  push:
+    branches:
+      - main
+
+env:
+  TF_LOG: INFO
+
+jobs:
+  validate-test:
+    uses: .github/workflows/terraform-validate.yaml@main
+    with:
+      tf_env: test

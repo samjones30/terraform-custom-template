@@ -1,18 +1,16 @@
-name: 'Terraform'
+name: Terraform Validate
 
 on: 
-  push:
-    branches:
-      - main
-
-env:
-  TF_LOG: INFO
+  workflow_call:
+    inputs:
+      tf_env:
+        required: true
+        type: string
 
 jobs:
-  terraform-validate-test:
+  terraform-validate-job:
     name: 'Terraform'
     runs-on: ubuntu-latest
-    environment: test
 
     defaults:
       run:
@@ -32,11 +30,11 @@ jobs:
 
       - name: Terraform init test
         id: init
-        run: terraform init 
+        run: terraform init -backend-config "backends/{{ $inputs.tf_env }}.conf"
 
       - name: Terraform workspace select
         id: workspace
-        run: terraform workspace select test || terraform workspace new test
+        run: terraform workspace select {{ $inputs.tf_env }} || terraform workspace new {{ $inputs.tf_env }}
 
       - name: Terraform format 
         id: fmt
@@ -46,7 +44,3 @@ jobs:
       - name: Terraform validate 
         id: validate
         run: terraform validate
-
-      - name: Terraform plan 
-        id: plan
-        run: terraform plan
