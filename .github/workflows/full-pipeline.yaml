@@ -34,21 +34,3 @@ jobs:
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
-  file-test:
-    needs: apply-test
-    name: 'Test file output'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Check file output
-        run: echo "${{ needs.apply-test.outputs.bucket_name }}"
-  
-  copy-file:
-    needs: apply-test
-    uses: ./.github/workflows/file-copy.yaml
-    with:
-      bucket_name: ${{ needs.apply-test.outputs.bucket_name }}
-    secrets:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
