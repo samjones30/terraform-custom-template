@@ -27,9 +27,11 @@ EOF
 resource "aws_s3_bucket_object" "index" {
   bucket = aws_s3_bucket.s3_bucket.id
   key    = "index.html"
-  acl    = "public-read" 
+  acl    = "public-read"
+  
 
-  source = "../src/index.html"
-  etag = filemd5("../src/index.html")
+  source       = "../src/index.html"  
+  etag         = filemd5("../src/index.html")
+  content_type = "text/html"
 
 }
