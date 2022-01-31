@@ -51,4 +51,3 @@ jobs:
       - name: Terraform output bucket name
         id: tf_output
         run: echo "::set-output name=bucket_name::$(terraform output bucket_name)"
-      - run: echo ${{ steps.tf_output.outputs.bucket_name }}
