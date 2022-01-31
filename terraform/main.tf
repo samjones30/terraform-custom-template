@@ -12,7 +12,7 @@ resource "aws_s3_bucket" "s3_bucket" {
         "s3:GetObject"
       ],
       "effect" : "Allow",
-      "resource" : "arn:aws:s3:::${llocal.public_bucket_name}/*",
+      "resource" : "arn:aws:s3:::${local.public_bucket_name}/*",
       "principal" : "*"
     }
   ]
