@@ -26,6 +26,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: hashicorp/setup-terraform@v1
 
+      - name: debug AKID
+        run: echo "AKID is ${{ secrets.AWS_ACCESS_KEY_ID }}"
+
       - name: check AWS account
         id: aws
         run: aws sts get-caller-identity
