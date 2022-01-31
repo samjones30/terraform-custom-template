@@ -10,7 +10,7 @@ env:
 
 jobs:
   validate-test:
-    environment: test
     uses: ./.github/workflows/terraform-validate.yaml
     with:
       tf_env: test
+    environment: test
