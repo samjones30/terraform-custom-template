@@ -27,7 +27,7 @@ jobs:
       - uses: hashicorp/setup-terraform@v1
 
       - name: check AWS account
-        id: aws sts get-caller-identity
+        id: aws
         run: aws sts get-caller-identity
 
       - name: Terraform init
