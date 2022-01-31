@@ -8,5 +8,5 @@ variable "region" {
 }
 
 locals {
-  public_bucket_name = var.public_bucket_name[terraform.workspace]
+  public_bucket_name = var.public_bucket_name[terraform.workspace]-data.aws_caller_identity.current.account_id
 }
