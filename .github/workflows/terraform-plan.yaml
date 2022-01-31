@@ -33,7 +33,7 @@ jobs:
 
       - name: Terraform init
         id: init
-        run: terraform init -backend-config "backends/${{ inputs.env }}"
+        run: terraform init -backend-config "./backends/${{ inputs.env }}.conf"
 
       - name: Terraform workspace select
         id: workspace
