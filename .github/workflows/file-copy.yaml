@@ -3,9 +3,6 @@ name: Copy files to S3 bucket
 on: 
   workflow_call:
     inputs:
-      env:
-        required: true
-        type: string
       bucket_name:
         required: true
         type: string
