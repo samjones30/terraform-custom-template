@@ -21,22 +21,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v1
 
-      - name: 'Terraform Format'
-        uses: hashicorp/terraform-github-actions@master
-        with:
-          tf_actions_subcommand: 'fmt'
-          tf_actions_working_dir: "./terraform"
+      - name: Terraform init test
+        id: init
+        run: terraform init 
 
-      - name: 'Terraform Init'
-        uses: hashicorp/terraform-github-actions@master
-        with:
-          tf_actions_subcommand: 'init'
-          tf_actions_working_dir: "./terraform"
-          args: "-backend-config=backends/test.conf"
-        env:
-            TF_WORKSPACE: test
+      - name: Terraform workspace select
+        id: workspace
+        run: terraform workspace select test || terraform workspace new test
 
-      - name: Terraform Validate
-        uses: hashicorp/terraform-github-actions/validate@v0.3.7
+      - name: Terraform format 
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
 
+      - name: Terraform validate 
+        id: validate
+        run: terraform validate
