@@ -3,7 +3,7 @@ name: Terraform Validate
 on: 
   workflow_call:
     inputs:
-      tf_env:
+      env:
         required: true
         type: string
 
@@ -11,6 +11,7 @@ jobs:
   terraform-validate-job:
     name: 'Terraform'
     runs-on: ubuntu-latest
+    environment: ${{ inputs.env }}
 
     defaults:
       run:
@@ -30,11 +31,11 @@ jobs:
 
       - name: Terraform init
         id: init
-        run: terraform init -backend-config "./backends/${{ inputs.tf_env }}.conf"
+        run: terraform init -backend-config "./backends/${{ inputs.env }}.conf"
 
       - name: Terraform workspace select
         id: workspace
-        run: terraform workspace select ${{ inputs.tf_env }} || terraform workspace new ${{ inputs.tf_env }}
+        run: terraform workspace select ${{ inputs.env }} || terraform workspace new ${{ inputs.env }}
 
       - name: Terraform format 
         id: fmt
