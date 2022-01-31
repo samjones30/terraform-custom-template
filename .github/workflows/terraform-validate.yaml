@@ -30,11 +30,11 @@ jobs:
 
       - name: Terraform init test
         id: init
-        run: terraform init -backend-config "backends/{{ $inputs.tf_env }}.conf"
+        run: terraform init -backend-config "backends/${{ inputs.tf_env }}.conf"
 
       - name: Terraform workspace select
         id: workspace
-        run: terraform workspace select {{ $inputs.tf_env }} || terraform workspace new {{ $inputs.tf_env }}
+        run: terraform workspace select ${{ inputs.tf_env }} || terraform workspace new ${{ inputs.tf_env }}
 
       - name: Terraform format 
         id: fmt
